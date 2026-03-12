@@ -1,20 +1,9 @@
 # Nexa Execution Layer - Execution Engine Prototype
 
-def execute_plan(plan):
+from context_manager import ContextManager
 
-    print("\nExecuting Plan:\n")
+context = ContextManager()
 
-    for step in plan:
-        print("Running:", step)
-
-    print("\nExecution Complete")
-
-
-if __name__ == "__main__":
-
-    sample_plan = [
-        "Collect data",
-        "Create document"
-    ]
-
-    execute_plan(sample_plan)
+def execute(task):
+    context.update("last_task", task)
+    print("Executing:", task)
